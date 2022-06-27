@@ -12,7 +12,7 @@ WORKDIR /app
 # Port issues
 # Copy files from the current directory into the container's /app directory.
 COPY ./requirements.txt /app
-COPY ${PYTHON_MAIN_FILE} /app/main.py
+COPY Python_Random_Guessing_Game.py /app/main.py
 
 # Install any needed packages specified in requirements.txt.
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
