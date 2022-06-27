@@ -51,12 +51,7 @@ if count >= math.log(upper - lower + 1, 2):
     print("\tBetter Luck Next time!")
 # Create a Flask object and an Api object.
 app = Flask(__name__)
-"""
-<div>Guess Number:</div>
-<form method="post">
-<input type="text" name = "guess"/>
-<input type="submit" name = "submit"/>
-</form>"""
+
 @app.route("/guess",methods=['POST','GET'])
 def newHome():
     if request.method == 'POST':
@@ -64,10 +59,18 @@ def newHome():
         if guess == x:
             return "Congratulations!"
         else:
+            
             count+=1
+            remainingGuesses = 3-count
             if(count > 3):
                 return "Game Over. The number was: " + x
-            return "Try Again :(" + 3-count + "guesses remaining"
+            return """
+            <div>Try Again :( {remainingGuesses} guesses remaining!</div>
+            <form method="post">
+            <input type="text" name = "guess"/>
+            <input type="submit" name = "submit"/>
+            </form>""".format(remainingGuesses=remainingGuesses)
+            
             
         return guess
     else:
