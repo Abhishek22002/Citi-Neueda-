@@ -78,7 +78,7 @@ def newHome():
         <input type="text" name = "guess"/>
         <input type="submit" name = "submit"/>
         </form>
-        """
+        """.format(x=x)
 @app.route('/')
 def home():
     return """<h2 style='color:red'>Random Number Generator Game!</h2>
