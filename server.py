@@ -1,12 +1,76 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 
+
+import random
+import math
+
+# Taking Inputs
+lower = 1
+ 
+# Taking Inputs
+upper = 10
+ 
+# generating random number between
+# the lower and upper
+x = random.randint(lower, upper)
+print("\n\tYou've only ",
+       round(math.log(upper - lower + 1, 2)),
+      " chances to guess the integer!\n")
+ 
+# Initializing the number of guesses.
+count = 1
+ 
+# for calculation of minimum number of
+# guesses depends upon range
+"""
+while count < math.log(upper - lower + 1, 2):
+    count += 1
+ 
+    # taking guessing number as input
+    guess = int(input("Guess a number:- "))
+ 
+    # Condition testing
+    if x == guess:
+        print("Congratulations you did it in ",
+              count - 1, " try")
+        # Once guessed, loop will break
+        break
+    elif x > guess:
+        print("You guessed too small!")
+    elif x < guess:
+        print("You Guessed too high!")
+"""
+
+ 
+# If Guessing is more than required guesses,
+# shows this output.
+if count >= math.log(upper - lower + 1, 2):
+    print("\nThe number is %d" % x)
+    print("\tBetter Luck Next time!")
 # Create a Flask object and an Api object.
 app = Flask(__name__)
+
+@app.route("/guess",methods=['POST','GET'])
+def newHome():
+    if request.method == 'POST':
+        guess = request.form['guess']
+        return guess
+    else:
+        return """<h2 style='color:red'>Random Number Generator Game!</h2>
+        <div>Guess Number:</div>
+        <form method="post">
+        <input type="text" name = "guess"/>
+        <input type="submit" name = "submit"/>
+        </form>
+        """
 @app.route('/')
 def home():
-    return """<h2 style='color:red'>Products Rest API using Flask</h2>
-    <a href='api/Products'>View products</a>"""
+    return """<h2 style='color:red'>Random Number Generator Game!</h2>
+    <div>Guess Number:</div>
+    <input type="text" name = "guess"/>
+    <input type="submit" name = "submit"
+    """
 api = Api(app)
 
 # Create some sample data (a list of Product objects).
@@ -111,7 +175,7 @@ class Product(Resource):
         return "Product not found", 404
 
 # Register our Product class against whatever URL patterns we want to support.      
-api.add_resource(Product, "/api/Products", "/api/Products/<int:id>")
+api.add_resource(Product, "/api/Products", "/api/Products/<int:id>", "/api/guess/<int:guess>")
 
 # Start the applictaion.
 if __name__ == '__main__':
