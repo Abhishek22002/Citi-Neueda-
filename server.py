@@ -29,7 +29,7 @@ def guess():
     if request.method == "POST":
         currGuess = request.form["guess"]
         print(currGuess)
-        return redirect(url_for('home'))
+        return currGuess
     return render_template("guessScreen.html")
 # Start the applictaion.
 if __name__ == '__main__':
