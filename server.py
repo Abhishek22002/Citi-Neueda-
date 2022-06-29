@@ -45,6 +45,7 @@ def tryagain():
 
 @app.route("/win")
 def win():
+    x = random.randint(lower, upper)
     return render_template("winScreen.html")
 # Start the applictaion.
 if __name__ == '__main__':
