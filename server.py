@@ -35,7 +35,7 @@ def guess():
             return redirect(url_for('end', message = "win"))
         else:
             global countG
-            countG = countG + 1
+            countG += 1
             return redirect(url_for('tryagain'))
         
     return render_template("guessScreen.html")
@@ -52,6 +52,8 @@ def tryagain():
 def end(message):
     global x
     x = random.randint(lower, upper)
+    global countG
+    countG = 0
     return render_template("winScreen.html",message = message,number = x)
 # Start the applictaion.
 if __name__ == '__main__':
