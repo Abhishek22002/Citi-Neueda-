@@ -1,3 +1,4 @@
+from itertools import count
 from flask import Flask, request,render_template, redirect, url_for
 from flask_restful import Api, Resource
 
@@ -33,7 +34,7 @@ def guess():
         if int(currGuess) == x:
             return redirect(url_for('win'))
         else:
-            
+            countG = countG + 1
             return redirect(url_for('tryagain'))
         
     return render_template("guessScreen.html")
