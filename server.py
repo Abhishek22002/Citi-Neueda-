@@ -34,7 +34,7 @@ def guess():
         else:
             count += 1
             remain = 3 - count
-            return redirect(url_for('tryagain'), remainGuess = remain)
+            return redirect(url_for('tryagain', remainGuess = remain))
         
     return render_template("guessScreen.html")
 @app.route("/tryagain/<int:remainGuess>")
