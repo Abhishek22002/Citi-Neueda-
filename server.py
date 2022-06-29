@@ -1,4 +1,4 @@
-from flask import Flask, request,render_template
+from flask import Flask, request,render_template, redirect, url_for
 from flask_restful import Api, Resource
 
 
@@ -20,11 +20,17 @@ count = 1
 app = Flask(__name__)
 
             
-@app.route("/")
-def newHome():
+@app.route("/home")
+def home():
     return render_template("game.html",number = x)
 
-
+@app.route("/guess", methods = ["GET", "POST"])
+def guess():
+    if request.method == "POST":
+        currGuess = request.form["guess"]
+        print(currGuess)
+        return redirect(url_for('home'))
+    return render_template("guessScreen.html")
 # Start the applictaion.
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
