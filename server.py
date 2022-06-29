@@ -51,16 +51,7 @@ if count >= math.log(upper - lower + 1, 2):
     print("\tBetter Luck Next time!")
 # Create a Flask object and an Api object.
 app = Flask(__name__)
-
 """
-            <div>Try Again :( {remainingGuesses} guesses remaining!</div>
-            <form method="post">
-            <input type="text" name = "guess"/>
-            <input type="submit" name = "submit"/>
-            </form>"""#.format(remainingGuesses=remainingGuesses)
-@app.route("/guess", methods=['POST','GET'])
-def newHome():
-    """
     if request.method == 'POST':
         guess = request.form['guess']
         if guess == x:
@@ -73,7 +64,15 @@ def newHome():
             else:
                 return "try again"
     """
-    return render_template("game.html", x=x)
+"""
+            <div>Try Again :( {remainingGuesses} guesses remaining!</div>
+            <form method="post">
+            <input type="text" name = "guess"/>
+            <input type="submit" name = "submit"/>
+            </form>"""#.format(remainingGuesses=remainingGuesses)
+@app.route("/guess", methods=['POST','GET'])
+def newHome():
+    return render_template("game.html", number = x)
 @app.route('/')
 def home():
     return """<h2 style='color:red'>Random Number Generator Game!</h2>
