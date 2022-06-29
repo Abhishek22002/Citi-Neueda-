@@ -28,7 +28,7 @@ def home():
 def guess():
     if request.method == "POST":
         currGuess = request.form["guess"]
-        print(currGuess)
+        
         if currGuess == x:
             return redirect(url_for('win'))
         return currGuess
