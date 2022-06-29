@@ -22,7 +22,7 @@ app = Flask(__name__)
             
 @app.route("/")
 def newHome():
-    return render_template("game.html")
+    return render_template("game.html",number = x)
 
 
 # Start the applictaion.
