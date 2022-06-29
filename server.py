@@ -23,7 +23,7 @@ app = Flask(__name__)
             
 @app.route("/home")
 def home():
-    x = random.randint(lower, upper)
+   
     return render_template("game.html", number = x)
 countG = 1
 @app.route("/guess", methods = ["GET", "POST"])
