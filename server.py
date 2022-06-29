@@ -33,7 +33,6 @@ def guess():
         if int(currGuess) == x:
             return redirect(url_for('win'))
         else:
-            countG += 1
             
             return redirect(url_for('tryagain'))
         
