@@ -25,15 +25,16 @@ app = Flask(__name__)
 def home():
    
     return render_template("game.html", number = x)
-countG = 1
+countG = 0
 @app.route("/guess", methods = ["GET", "POST"])
 def guess():
     if request.method == "POST":
         currGuess = request.form["guess"]
         
         if int(currGuess) == x:
-            return redirect(url_for('win'))
+            return redirect(url_for('win', message = "win"))
         else:
+            global countG
             countG = countG + 1
             return redirect(url_for('tryagain'))
         
@@ -41,12 +42,16 @@ def guess():
 
 @app.route("/tryagain")
 def tryagain():
+    global countG
+    if 3-countG == 0:
+        return render_template("endscreen.html", message = "loss")
     return render_template("tryagain.html", guesses = 3-countG)
 
-@app.route("/win")
-def win():
+@app.route("/end/<message>")
+def win(message):
+    global x
     x = random.randint(lower, upper)
-    return render_template("winScreen.html")
+    return render_template("winScreen.html",message = message,number = x)
 # Start the applictaion.
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
