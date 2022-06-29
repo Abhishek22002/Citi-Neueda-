@@ -44,7 +44,7 @@ def guess():
 def tryagain():
     global countG
     if 3-countG == 0:
-        return render_template("endscreen.html", message = "loss",number = x)
+        return redirect(url_for('end', message = "loss"))
     return render_template("tryagain.html", guesses = 3-countG)
 
 @app.route("/end/<message>")
