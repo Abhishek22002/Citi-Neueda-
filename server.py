@@ -70,9 +70,11 @@ app = Flask(__name__)
             <input type="text" name = "guess"/>
             <input type="submit" name = "submit"/>
             </form>"""#.format(remainingGuesses=remainingGuesses)
-@app.route("/guess", methods=['POST','GET'])
+@app.route("/guess")
 def newHome():
     return render_template("game.html", number = x)
+
+    
 @app.route('/')
 def home():
     return """<h2 style='color:red'>Random Number Generator Game!</h2>
