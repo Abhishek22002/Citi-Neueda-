@@ -13,7 +13,7 @@ upper = 10
 
 x = random.randint(lower, upper)
 
-count = 1
+
 
 
 
@@ -22,8 +22,8 @@ app = Flask(__name__)
             
 @app.route("/home")
 def home():
-    return render_template("game.html",number = x)
-
+    return render_template("game.html", number = x)
+countG = 1
 @app.route("/guess", methods = ["GET", "POST"])
 def guess():
     if request.method == "POST":
@@ -32,9 +32,9 @@ def guess():
         if int(currGuess) == x:
             return redirect(url_for('win'))
         else:
-            count += 1
-            remain = 3 - count
-            return redirect(url_for('tryagain', remainGuess = remain))
+            countG += 1
+            remain = 3 - countG
+            return redirect(url_for('tryagain', remainGuess = int(remain)))
         
     return render_template("guessScreen.html")
 @app.route("/tryagain/<int:remainGuess>")
