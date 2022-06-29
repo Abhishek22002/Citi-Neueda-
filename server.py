@@ -32,7 +32,7 @@ def guess():
         currGuess = request.form["guess"]
         
         if int(currGuess) == x:
-            return redirect(url_for('win', message = "win"))
+            return redirect(url_for('end', message = "win"))
         else:
             global countG
             countG = countG + 1
@@ -44,7 +44,7 @@ def guess():
 def tryagain():
     global countG
     if 3-countG == 0:
-        return render_template("endscreen.html", message = "loss")
+        return render_template("endscreen.html", message = "loss",number = x)
     return render_template("tryagain.html", guesses = 3-countG)
 
 @app.route("/end/<message>")
