@@ -72,9 +72,9 @@ app = Flask(__name__)
             </form>"""#.format(remainingGuesses=remainingGuesses)
 @app.route("/guess")
 def newHome():
-    return render_template("game.html", number = x)
+    return render_template("game.html", number = 1)
 
-    
+
 @app.route('/')
 def home():
     return """<h2 style='color:red'>Random Number Generator Game!</h2>
