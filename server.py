@@ -48,7 +48,7 @@ def tryagain():
     return render_template("tryagain.html", guesses = 3-countG)
 
 @app.route("/end/<message>")
-def win(message):
+def end(message):
     global x
     x = random.randint(lower, upper)
     return render_template("winScreen.html",message = message,number = x)
