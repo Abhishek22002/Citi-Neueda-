@@ -34,13 +34,15 @@ def guess():
             return redirect(url_for('win'))
         else:
             countG += 1
-            remain = 3 - countG
-            return redirect(url_for('tryagain/', remainGuess = int(remain)))
+            
+            return redirect(url_for('tryagain'))
         
     return render_template("guessScreen.html")
-@app.route("/tryagain/<int:remainGuess>")
-def tryagain(remainGuess):
-    return render_template("tryagain.html",guesses = remainGuess)
+
+@app.route("/tryagain")
+def tryagain():
+    return render_template("tryagain.html", guesses = 3-countG)
+
 @app.route("/win")
 def win():
     return render_template("winScreen.html")
