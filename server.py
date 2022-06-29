@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,render_template
 from flask_restful import Api, Resource
 
 
@@ -58,8 +58,9 @@ app = Flask(__name__)
             <input type="text" name = "guess"/>
             <input type="submit" name = "submit"/>
             </form>"""#.format(remainingGuesses=remainingGuesses)
-@app.route("/guess",methods=['POST','GET'])
+@app.route("/guess", methods=['POST','GET'])
 def newHome():
+    """
     if request.method == 'POST':
         guess = request.form['guess']
         if guess == x:
@@ -71,26 +72,14 @@ def newHome():
                 return "Game Over. The number was: " + x
             else:
                 return "try again"
-            
-            
-            
-            
-        return guess
-    else:
-        return """<h2 style='color:red'>Random Number Generator Game!</h2>
-        <div> Number: {x} </div> 
-        <div>Guess Number:</div>
-        <form method="post">
-        <input type="text" name = "guess"/>
-        <input type="submit" name = "submit"/>
-        </form>
-        """.format(x=x)
+    """
+    return render_template("game.html", x=x)
 @app.route('/')
 def home():
     return """<h2 style='color:red'>Random Number Generator Game!</h2>
     <div>Guess Number:</div>
     <input type="text" name = "guess"/>
-    <input type="submit" name = "submit"
+    <input type="submit" name = "submit"/>
     """
 api = Api(app)
 
