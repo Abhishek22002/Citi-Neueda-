@@ -31,9 +31,13 @@ def guess():
         
         if int(currGuess) == x:
             return redirect(url_for('win'))
+        else:
+            return redirect(url_for('tryagain'), remainGuess = 3-count)
         return currGuess
     return render_template("guessScreen.html")
-
+@app.route("tryagain/<int:remainGuess>")
+def tryagain(remainGuess):
+    return render_template("tryagain.html",guesses = remainGuess)
 @app.route("/win")
 def win():
     return render_template("winScreen.html")
