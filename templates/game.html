@@ -3,7 +3,6 @@
 
 <body>
     <h2 style='color:red'>Random Number Generator Game!</h2>
-    <div> Number: {{ number }} </div> 
     <div>Guess Number:</div>
     <form action = "{{ url_for('guess') }}" method = "POST">
     <input type="text" name = "guess"/>
