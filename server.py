@@ -51,10 +51,11 @@ def tryagain():
 @app.route("/end/<message>")
 def end(message):
     global x
+    oldX = x
     x = random.randint(lower, upper)
     global countG
     countG = 0
-    return render_template("winScreen.html",message = message,number = x)
+    return render_template("winScreen.html",message = message,number = oldX)
 # Start the applictaion.
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
