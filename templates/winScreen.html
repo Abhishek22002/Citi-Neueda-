@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-
-<body>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body class="p-3 mb-2 bg-secondary text-white" style = "text-align:center">
+    <br/><br/>
     {%if message == "win" %}
-    <div> Congratulations! You guessed correctly!</div>
+    <h1> Congratulations! You guessed correctly!</h1>
     {%else%}
-    <div> Sorry! You are out of guesses. The number was: {{number}} </div>
+    <h1> Sorry! You are out of guesses. The number was: {{number}} </h1>
     {%endif%}
     <a href = "{{ url_for('home') }}"> 
-        <button type = "button"  > Play again! 
+        <button type = "button" class="btn btn-dark" > Play again! 
 
         </button> 
     </a>
