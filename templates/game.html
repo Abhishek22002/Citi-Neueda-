@@ -4,8 +4,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body class="p-3 mb-2 bg-secondary text-white" style = "text-align:center">
-    <h2 style='color:purple'>Random Number Generator Game!</h2>
-    <div>Guess Number:</div>
+
+    <h1 style='color:purple'>Random Number Generator Game!</h1>
+    <br/><br/>
+    <h3>Guess Number:</h3>
     <form action = "{{ url_for('guess') }}" method = "POST">
     <input type="text" name = "guess"/>
     <br/>
