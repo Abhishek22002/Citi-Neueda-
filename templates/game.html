@@ -6,14 +6,13 @@
 <body class="p-3 mb-2 bg-secondary text-white" style = "text-align:center">
 
     <h1 style='color:purple'>Random Number Generator Game!</h1>
-    <br/><br/>
+    <br/><br/><br/>
     <h3>Guess Number:</h3>
     <form action = "{{ url_for('guess') }}" method = "POST">
     <input type="text" name = "guess"/>
-    <br/>
-    <div>
-        <input type="submit" class="btn btn-dark" name = "submit"/>
-    </div>
+    <br/><br/>
+    
+    <input type="submit" class="btn btn-dark" name = "submit"/>
     </form>
 </body>
     
